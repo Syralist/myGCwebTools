@@ -12,10 +12,12 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         gctmainwindow.cpp \
-    coordinate.cpp
+    coordinate.cpp \
+    letternumberconverter.cpp
 
 HEADERS  += gctmainwindow.h \
-    coordinate.h
+    coordinate.h \
+    letternumberconverter.h
 
 FORMS    += gctmainwindow.ui
 
@@ -23,4 +25,10 @@ TRANSLATIONS += gct_de.ts
 
 OTHER_FILES += \
     gct_de.ts
+
+
+
+
+
+
 

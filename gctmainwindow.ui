@@ -32,7 +32,7 @@
          <x>0</x>
          <y>0</y>
          <width>148</width>
-         <height>429</height>
+         <height>431</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout">
@@ -43,12 +43,23 @@
           </property>
          </widget>
         </item>
+        <item>
+         <widget class="QPushButton" name="LetterNumberMenuButton">
+          <property name="text">
+           <string>Letters &amp;&amp;
+Numbers</string>
+          </property>
+         </widget>
+        </item>
        </layout>
       </widget>
      </widget>
     </item>
     <item>
      <widget class="QStackedWidget" name="stackedWidget">
+      <property name="currentIndex">
+       <number>1</number>
+      </property>
       <widget class="QWidget" name="CoordPage">
        <layout class="QGridLayout" name="gridLayout">
         <property name="margin">
@@ -146,7 +157,135 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="page_2"/>
+      <widget class="QWidget" name="LetterNumberPage">
+       <layout class="QGridLayout" name="gridLayout_3">
+        <property name="margin">
+         <number>0</number>
+        </property>
+        <property name="spacing">
+         <number>0</number>
+        </property>
+        <item row="0" column="0">
+         <widget class="QTabWidget" name="LetterNumberTabWidget">
+          <property name="currentIndex">
+           <number>0</number>
+          </property>
+          <widget class="QWidget" name="LetterNumberTab01">
+           <attribute name="title">
+            <string>Letters to Numbers</string>
+           </attribute>
+           <layout class="QGridLayout" name="gridLayout_4">
+            <item row="1" column="0">
+             <widget class="QLineEdit" name="LetterNumberLineInput"/>
+            </item>
+            <item row="2" column="0">
+             <layout class="QGridLayout" name="gridLayout_5">
+              <item row="1" column="0">
+               <widget class="QLabel" name="LetterNumberLabelDirection">
+                <property name="text">
+                 <string>Direction</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="1">
+               <widget class="QComboBox" name="LetterNumberComboDirection">
+                <item>
+                 <property name="text">
+                  <string>A=1</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Z=1</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="2" column="0">
+               <widget class="QLabel" name="LetterNumberLabelOffset">
+                <property name="text">
+                 <string>Offset</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QComboBox" name="LetterNumberComboInput">
+                <item>
+                 <property name="text">
+                  <string>Letters to Numbers</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Numbers to Letters</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="0" column="0">
+               <widget class="QLabel" name="LetterNumberLabelInput">
+                <property name="text">
+                 <string>Input</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="1">
+               <widget class="QSpinBox" name="LetterNumberSpinOffset">
+                <property name="minimum">
+                 <number>-9999</number>
+                </property>
+                <property name="maximum">
+                 <number>9999</number>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item row="3" column="0">
+             <widget class="QLineEdit" name="LetterNumberLineOutput"/>
+            </item>
+            <item row="0" column="0">
+             <spacer name="verticalSpacer">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>40</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item row="4" column="0">
+             <spacer name="verticalSpacer_2">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>40</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="LetterNumberTab02">
+           <attribute name="title">
+            <string>Numeric systems</string>
+           </attribute>
+          </widget>
+          <widget class="QWidget" name="LetterNumberTab03">
+           <attribute name="title">
+            <string>Calculations</string>
+           </attribute>
+          </widget>
+         </widget>
+        </item>
+       </layout>
+      </widget>
      </widget>
     </item>
    </layout>
@@ -157,7 +296,7 @@
      <x>0</x>
      <y>0</y>
      <width>701</width>
-     <height>25</height>
+     <height>23</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -203,8 +342,8 @@
    <slot>close()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>69</x>
-     <y>57</y>
+     <x>-1</x>
+     <y>-1</y>
     </hint>
     <hint type="destinationlabel">
      <x>350</x>

@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "coordinate.h"
+#include "letternumberconverter.h"
 
 namespace Ui {
     class gctMainWindow;
@@ -17,11 +18,14 @@ public:
     ~gctMainWindow();
 
 public slots:
+    void CoordMenuClicked();
+    void LetterNumberMenuClicked();
     void PrintCoordinates();
 
 private:
     Ui::gctMainWindow *ui;
     Coordinate m_TestCoord;
+    LetterNumberConverter m_LetterNumberConverter;
 };
 
 #endif // GCTMAINWINDOW_H
