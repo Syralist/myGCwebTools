@@ -13,8 +13,13 @@ gctMainWindow::gctMainWindow(QWidget *parent) :
     connect(ui->LetterNumberComboInput,SIGNAL(currentIndexChanged(int)),&m_LetterNumberConverter,SLOT(setInput(int)));
     connect(ui->LetterNumberComboDirection,SIGNAL(currentIndexChanged(int)),&m_LetterNumberConverter,SLOT(setDirection(int)));
     connect(ui->LetterNumberSpinOffset,SIGNAL(valueChanged(int)),&m_LetterNumberConverter,SLOT(setOffset(int)));
+    connect(ui->LetterNumberLineInput,SIGNAL(textChanged(QString)),&m_LetterNumberConverter,SLOT(setLetters(QString)));
+    connect(ui->LetterNumberLineInput,SIGNAL(textChanged(QString)),&m_LetterNumberConverter,SLOT(setNumbers(QString)));
+    connect(&m_LetterNumberConverter,SIGNAL(UpdatedLetters(QString)),ui->LetterNumberLineOutput,SLOT(setText(QString)));
+    connect(&m_LetterNumberConverter,SIGNAL(UpdatedNumbers(QString)),ui->LetterNumberLineOutput,SLOT(setText(QString)));
 
     CoordMenuClicked();
+    LetterNumberMenuClicked();
 }
 
 gctMainWindow::~gctMainWindow()
