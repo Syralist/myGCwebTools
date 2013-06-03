@@ -15,6 +15,7 @@ public:
 signals:
     void UpdatedLetters(QString newString);
     void UpdatedNumbers(QString newString);
+    void UpdatedStatistics(QList<int> &newStatistics);
 
 public slots:
     void setInput(int Input);
@@ -24,9 +25,12 @@ public slots:
     void setNumbers(QString Numbers);
 
 private:
+    int CrossSum(int Number);
+
     QString m_sLetters;
     QString m_sNumbers;
     QList<int> m_lNumbers;
+    QList<int> m_lStatistics;
     int m_iInput;		//0: Letters to Numbers, 1: Numbers to Letters
     int m_iDirection;	//0: A=1, 1: Z=1
     int m_iOffset;		//Offset for Conversion

@@ -17,6 +17,7 @@ gctMainWindow::gctMainWindow(QWidget *parent) :
     connect(ui->LetterNumberLineInput,SIGNAL(textChanged(QString)),&m_LetterNumberConverter,SLOT(setNumbers(QString)));
     connect(&m_LetterNumberConverter,SIGNAL(UpdatedLetters(QString)),ui->LetterNumberLineOutput,SLOT(setText(QString)));
     connect(&m_LetterNumberConverter,SIGNAL(UpdatedNumbers(QString)),ui->LetterNumberLineOutput,SLOT(setText(QString)));
+    connect(&m_LetterNumberConverter,SIGNAL(UpdatedStatistics(QList<int>&)),this,SLOT(LetterNumberStatistics(QList<int>&)));
 
     CoordMenuClicked();
     LetterNumberMenuClicked();
@@ -42,4 +43,13 @@ void gctMainWindow::CoordMenuClicked()
 void gctMainWindow::LetterNumberMenuClicked()
 {
     ui->stackedWidget->setCurrentWidget(ui->LetterNumberPage);
+}
+
+void gctMainWindow::LetterNumberStatistics(QList<int> &Statictics)
+{
+    ui->LetterNumberLineCharacters->setText(QString::number(Statictics.at(0)));
+    ui->LetterNumberLineLetters->setText(QString::number(Statictics.at(1)));
+    ui->LetterNumberLineLetterSum->setText(QString::number(Statictics.at(2)));
+    ui->LetterNumberLineCrossSumLetterSum->setText(QString::number(Statictics.at(3)));
+    ui->LetterNumberLineCrossSumLetterSumIterated->setText(QString::number(Statictics.at(4)));
 }

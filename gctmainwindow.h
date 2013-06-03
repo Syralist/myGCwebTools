@@ -21,6 +21,7 @@ public slots:
     void CoordMenuClicked();
     void LetterNumberMenuClicked();
     void PrintCoordinates();
+    void LetterNumberStatistics(QList<int> &Statictics);
 
 private:
     Ui::gctMainWindow *ui;

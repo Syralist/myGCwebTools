@@ -257,7 +257,7 @@ Numbers</string>
               </property>
              </spacer>
             </item>
-            <item row="4" column="0">
+            <item row="7" column="0">
              <spacer name="verticalSpacer_2">
               <property name="orientation">
                <enum>Qt::Vertical</enum>
@@ -269,6 +269,72 @@ Numbers</string>
                </size>
               </property>
              </spacer>
+            </item>
+            <item row="6" column="0">
+             <layout class="QFormLayout" name="formLayout">
+              <item row="0" column="0">
+               <widget class="QLabel" name="LetterNumberLabelCharacters">
+                <property name="text">
+                 <string>#Characters</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QLineEdit" name="LetterNumberLineCharacters">
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QLabel" name="LetterNumberLabelLetters">
+                <property name="text">
+                 <string>#Letters</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="1">
+               <widget class="QLineEdit" name="LetterNumberLineLetters">
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="1">
+               <widget class="QLineEdit" name="LetterNumberLineCrossSumLetterSum">
+                <property name="readOnly">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="0">
+               <widget class="QLabel" name="LetterNumberLabelCrossSumLetterSum">
+                <property name="text">
+                 <string>Cross sum of Letter sum</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="0">
+               <widget class="QLabel" name="LetterNumberLabelLetterSum">
+                <property name="text">
+                 <string>Letter sum</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="1">
+               <widget class="QLineEdit" name="LetterNumberLineLetterSum"/>
+              </item>
+              <item row="4" column="0">
+               <widget class="QLabel" name="LetterNumberLabelCrossSumLetterSumIterated">
+                <property name="text">
+                 <string>Cross sum of Letter sum iterated</string>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="1">
+               <widget class="QLineEdit" name="LetterNumberLineCrossSumLetterSumIterated"/>
+              </item>
+             </layout>
             </item>
            </layout>
           </widget>
