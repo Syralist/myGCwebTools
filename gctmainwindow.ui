@@ -32,7 +32,7 @@
          <x>0</x>
          <y>0</y>
          <width>148</width>
-         <height>431</height>
+         <height>429</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout">
@@ -44,10 +44,16 @@
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="LetterNumberMenuButton">
+         <widget class="QPushButton" name="LetterMenuButton">
           <property name="text">
-           <string>Letters &amp;&amp;
-Numbers</string>
+           <string>Letters</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="NumberMenuButton">
+          <property name="text">
+           <string>Numbers</string>
           </property>
          </widget>
         </item>
@@ -58,11 +64,20 @@ Numbers</string>
     <item>
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="CoordPage">
        <layout class="QGridLayout" name="gridLayout">
-        <property name="margin">
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
          <number>0</number>
         </property>
         <property name="spacing">
@@ -157,38 +172,47 @@ Numbers</string>
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="LetterNumberPage">
+      <widget class="QWidget" name="LetterPage">
        <layout class="QGridLayout" name="gridLayout_3">
-        <property name="margin">
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
          <number>0</number>
         </property>
         <property name="spacing">
          <number>0</number>
         </property>
         <item row="0" column="0">
-         <widget class="QTabWidget" name="LetterNumberTabWidget">
+         <widget class="QTabWidget" name="LetterTabWidget">
           <property name="currentIndex">
-           <number>0</number>
+           <number>1</number>
           </property>
-          <widget class="QWidget" name="LetterNumberTab01">
+          <widget class="QWidget" name="LetterTab01">
            <attribute name="title">
             <string>Letters to Numbers</string>
            </attribute>
            <layout class="QGridLayout" name="gridLayout_4">
             <item row="1" column="0">
-             <widget class="QLineEdit" name="LetterNumberLineInput"/>
+             <widget class="QLineEdit" name="LetterLineInput"/>
             </item>
             <item row="2" column="0">
              <layout class="QGridLayout" name="gridLayout_5">
               <item row="1" column="0">
-               <widget class="QLabel" name="LetterNumberLabelDirection">
+               <widget class="QLabel" name="LetterLabelDirection">
                 <property name="text">
                  <string>Direction</string>
                 </property>
                </widget>
               </item>
               <item row="1" column="1">
-               <widget class="QComboBox" name="LetterNumberComboDirection">
+               <widget class="QComboBox" name="LetterComboDirection">
                 <item>
                  <property name="text">
                   <string>A=1</string>
@@ -202,14 +226,14 @@ Numbers</string>
                </widget>
               </item>
               <item row="2" column="0">
-               <widget class="QLabel" name="LetterNumberLabelOffset">
+               <widget class="QLabel" name="LetterLabelOffset">
                 <property name="text">
                  <string>Offset</string>
                 </property>
                </widget>
               </item>
               <item row="0" column="1">
-               <widget class="QComboBox" name="LetterNumberComboInput">
+               <widget class="QComboBox" name="LetterComboInput">
                 <item>
                  <property name="text">
                   <string>Letters to Numbers</string>
@@ -223,14 +247,14 @@ Numbers</string>
                </widget>
               </item>
               <item row="0" column="0">
-               <widget class="QLabel" name="LetterNumberLabelInput">
+               <widget class="QLabel" name="LetterLabelInput">
                 <property name="text">
                  <string>Input</string>
                 </property>
                </widget>
               </item>
               <item row="2" column="1">
-               <widget class="QSpinBox" name="LetterNumberSpinOffset">
+               <widget class="QSpinBox" name="LetterSpinOffset">
                 <property name="minimum">
                  <number>-9999</number>
                 </property>
@@ -242,7 +266,7 @@ Numbers</string>
              </layout>
             </item>
             <item row="3" column="0">
-             <widget class="QLineEdit" name="LetterNumberLineOutput"/>
+             <widget class="QLineEdit" name="LetterLineOutput"/>
             </item>
             <item row="0" column="0">
              <spacer name="verticalSpacer">
@@ -273,79 +297,110 @@ Numbers</string>
             <item row="6" column="0">
              <layout class="QFormLayout" name="formLayout">
               <item row="0" column="0">
-               <widget class="QLabel" name="LetterNumberLabelCharacters">
+               <widget class="QLabel" name="LetterLabelCharacters">
                 <property name="text">
                  <string>#Characters</string>
                 </property>
                </widget>
               </item>
               <item row="0" column="1">
-               <widget class="QLineEdit" name="LetterNumberLineCharacters">
+               <widget class="QLineEdit" name="LetterLineCharacters">
                 <property name="readOnly">
                  <bool>true</bool>
                 </property>
                </widget>
               </item>
               <item row="1" column="0">
-               <widget class="QLabel" name="LetterNumberLabelLetters">
+               <widget class="QLabel" name="LetterLabelLetters">
                 <property name="text">
                  <string>#Letters</string>
                 </property>
                </widget>
               </item>
               <item row="1" column="1">
-               <widget class="QLineEdit" name="LetterNumberLineLetters">
+               <widget class="QLineEdit" name="LetterLineLetters">
                 <property name="readOnly">
                  <bool>true</bool>
                 </property>
                </widget>
               </item>
               <item row="3" column="1">
-               <widget class="QLineEdit" name="LetterNumberLineCrossSumLetterSum">
+               <widget class="QLineEdit" name="LetterLineCrossSumLetterSum">
                 <property name="readOnly">
                  <bool>true</bool>
                 </property>
                </widget>
               </item>
               <item row="3" column="0">
-               <widget class="QLabel" name="LetterNumberLabelCrossSumLetterSum">
+               <widget class="QLabel" name="LetterLabelCrossSumLetterSum">
                 <property name="text">
                  <string>Cross sum of Letter sum</string>
                 </property>
                </widget>
               </item>
               <item row="2" column="0">
-               <widget class="QLabel" name="LetterNumberLabelLetterSum">
+               <widget class="QLabel" name="LetterLabelLetterSum">
                 <property name="text">
                  <string>Letter sum</string>
                 </property>
                </widget>
               </item>
               <item row="2" column="1">
-               <widget class="QLineEdit" name="LetterNumberLineLetterSum"/>
+               <widget class="QLineEdit" name="LetterLineLetterSum"/>
               </item>
               <item row="4" column="0">
-               <widget class="QLabel" name="LetterNumberLabelCrossSumLetterSumIterated">
+               <widget class="QLabel" name="LetterLabelCrossSumLetterSumIterated">
                 <property name="text">
                  <string>Cross sum of Letter sum iterated</string>
                 </property>
                </widget>
               </item>
               <item row="4" column="1">
-               <widget class="QLineEdit" name="LetterNumberLineCrossSumLetterSumIterated"/>
+               <widget class="QLineEdit" name="LetterLineCrossSumLetterSumIterated"/>
               </item>
              </layout>
             </item>
            </layout>
           </widget>
-          <widget class="QWidget" name="LetterNumberTab02">
+          <widget class="QWidget" name="LetterTab02">
            <attribute name="title">
-            <string>Numeric systems</string>
+            <string>Letter codes</string>
            </attribute>
           </widget>
-          <widget class="QWidget" name="LetterNumberTab03">
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="NumberPage">
+       <layout class="QGridLayout" name="gridLayout_6">
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
+        <property name="spacing">
+         <number>0</number>
+        </property>
+        <item row="0" column="0">
+         <widget class="QTabWidget" name="NumberTabWidget">
+          <property name="currentIndex">
+           <number>1</number>
+          </property>
+          <widget class="QWidget" name="NumberTab01">
            <attribute name="title">
-            <string>Calculations</string>
+            <string>Numeric Systems</string>
+           </attribute>
+          </widget>
+          <widget class="QWidget" name="NumberTab02">
+           <attribute name="title">
+            <string>Tab 2</string>
            </attribute>
           </widget>
          </widget>
@@ -362,7 +417,7 @@ Numbers</string>
      <x>0</x>
      <y>0</y>
      <width>701</width>
-     <height>23</height>
+     <height>25</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">

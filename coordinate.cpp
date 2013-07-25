@@ -150,12 +150,215 @@ QString Coordinate::printDegressMinutesSeconds()
 
 void Coordinate::updateFromDegrees(QString string)
 {
+    QString NorthPart;
+    QString EastPart;
+    QString PreparedString = string.simplified();
+
+    PreparedString.replace("N ","N",Qt::CaseInsensitive);
+    PreparedString.replace("S ","S",Qt::CaseInsensitive);
+    PreparedString.replace("E ","E",Qt::CaseInsensitive);
+    PreparedString.replace("W ","W",Qt::CaseInsensitive);
+    PreparedString.replace(",",".",Qt::CaseInsensitive);
+    PreparedString.replace("°","",Qt::CaseInsensitive);
+
+    QStringList Parts = PreparedString.split(' ');
+    if(Parts.size() == 2)
+    {
+        QString FirstPart = Parts.at(0).simplified();
+        QString SecondPart = Parts.at(1).simplified();
+
+        if(FirstPart.contains("N",Qt::CaseInsensitive))
+        {
+            NorthPart = FirstPart.remove("N",Qt::CaseInsensitive);
+        }
+        else if(FirstPart.contains("S",Qt::CaseInsensitive))
+        {
+            NorthPart = FirstPart.remove("S",Qt::CaseInsensitive);
+            NorthPart.prepend("-");
+        }
+        else
+        {
+            NorthPart = FirstPart;
+        }
+        if(SecondPart.contains("E",Qt::CaseInsensitive))
+        {
+            EastPart = SecondPart.remove("E",Qt::CaseInsensitive);
+        }
+        else if(SecondPart.contains("W",Qt::CaseInsensitive))
+        {
+            EastPart = SecondPart.remove("W",Qt::CaseInsensitive);
+            EastPart.prepend("-");
+        }
+        else
+        {
+            EastPart = SecondPart;
+        }
+    }
+    else
+    {
+        return;
+    }
+    m_dDegreeNorth = NorthPart.toDouble();
+    m_dDegreeEast = EastPart.toDouble();
 }
 
 void Coordinate::updateFromDegreesMinutes(QString string)
 {
+    QString NorthDegreePart;
+    QString NorthMinutePart;
+    bool isSouth;
+    QString EastDegreePart;
+    QString EastMinutePart;
+    bool isWest;
+    QString PreparedString = string.simplified();
+
+    PreparedString.replace("N ","N",Qt::CaseInsensitive);
+    PreparedString.replace("S ","S",Qt::CaseInsensitive);
+    PreparedString.replace("E ","E",Qt::CaseInsensitive);
+    PreparedString.replace("W ","W",Qt::CaseInsensitive);
+    PreparedString.replace(",",".",Qt::CaseInsensitive);
+    PreparedString.replace("°"," ",Qt::CaseInsensitive);
+    PreparedString.replace("'"," ",Qt::CaseInsensitive);
+    PreparedString = PreparedString.simplified();
+
+    QStringList Parts = PreparedString.split(' ');
+    if(Parts.size() == 4)
+    {
+        QString FirstPart = Parts.at(0).simplified();
+        QString SecondPart = Parts.at(1).simplified();
+        QString ThirdPart = Parts.at(2).simplified();
+        QString FourthPart = Parts.at(3).simplified();
+
+        if(FirstPart.contains("N",Qt::CaseInsensitive))
+        {
+            NorthDegreePart = FirstPart.remove("N",Qt::CaseInsensitive);
+        }
+        else if(FirstPart.contains("S",Qt::CaseInsensitive))
+        {
+            NorthDegreePart = FirstPart.remove("S",Qt::CaseInsensitive);
+            isSouth = true;
+        }
+        else
+        {
+            NorthDegreePart = FirstPart;
+        }
+        NorthMinutePart = SecondPart;
+
+        if(ThirdPart.contains("E",Qt::CaseInsensitive))
+        {
+            EastDegreePart = ThirdPart.remove("E",Qt::CaseInsensitive);
+        }
+        else if(ThirdPart.contains("W",Qt::CaseInsensitive))
+        {
+            EastDegreePart = ThirdPart.remove("W",Qt::CaseInsensitive);
+            isWest = true;
+        }
+        else
+        {
+            EastDegreePart = ThirdPart;
+        }
+        EastMinutePart = FourthPart;
+    }
+    else
+    {
+        return;
+    }
+    m_dDegreeNorth = NorthDegreePart.toDouble();
+    m_dDegreeNorth += NorthMinutePart.toDouble()/60.0;
+    if(isSouth)
+    {
+        m_dDegreeNorth *= -1.0;
+    }
+    m_dDegreeEast = EastDegreePart.toDouble();
+    m_dDegreeEast += EastMinutePart.toDouble()/60.0;
+    if(isWest)
+    {
+        m_dDegreeEast *= -1.0;
+    }
+    ;
 }
 
 void Coordinate::updateFromDegreesMinutesSeconds(QString string)
 {
+    QString NorthDegreePart;
+    QString NorthMinutePart;
+    QString NorthSecondPart;
+    bool isSouth;
+    QString EastDegreePart;
+    QString EastMinutePart;
+    QString EastSecondPart;
+    bool isWest;
+    QString PreparedString = string.simplified();
+
+    PreparedString.replace("N ","N",Qt::CaseInsensitive);
+    PreparedString.replace("S ","S",Qt::CaseInsensitive);
+    PreparedString.replace("E ","E",Qt::CaseInsensitive);
+    PreparedString.replace("W ","W",Qt::CaseInsensitive);
+    PreparedString.replace(",",".",Qt::CaseInsensitive);
+    PreparedString.replace("°"," ",Qt::CaseInsensitive);
+    PreparedString.replace("'"," ",Qt::CaseInsensitive);
+    PreparedString.replace("\""," ",Qt::CaseInsensitive);
+    PreparedString = PreparedString.simplified();
+
+    QStringList Parts = PreparedString.split(' ');
+    if(Parts.size() == 6)
+    {
+        QString FirstPart = Parts.at(0).simplified();
+        QString SecondPart = Parts.at(1).simplified();
+        QString ThirdPart = Parts.at(2).simplified();
+        QString FourthPart = Parts.at(3).simplified();
+        QString FifthPart = Parts.at(4).simplified();
+        QString SixthPart = Parts.at(5).simplified();
+
+        if(FirstPart.contains("N",Qt::CaseInsensitive))
+        {
+            NorthDegreePart = FirstPart.remove("N",Qt::CaseInsensitive);
+        }
+        else if(FirstPart.contains("S",Qt::CaseInsensitive))
+        {
+            NorthDegreePart = FirstPart.remove("S",Qt::CaseInsensitive);
+            isSouth = true;
+        }
+        else
+        {
+            NorthDegreePart = FirstPart;
+        }
+        NorthMinutePart = SecondPart;
+        NorthSecondPart = ThirdPart;
+
+        if(FourthPart.contains("E",Qt::CaseInsensitive))
+        {
+            EastDegreePart = FourthPart.remove("E",Qt::CaseInsensitive);
+        }
+        else if(FourthPart.contains("W",Qt::CaseInsensitive))
+        {
+            EastDegreePart = FourthPart.remove("W",Qt::CaseInsensitive);
+            isWest = true;
+        }
+        else
+        {
+            EastDegreePart = FourthPart;
+        }
+        EastMinutePart = FifthPart;
+        EastSecondPart = SixthPart;
+    }
+    else
+    {
+        return;
+    }
+    m_dDegreeNorth = NorthDegreePart.toDouble();
+    m_dDegreeNorth += NorthMinutePart.toDouble()/60.0;
+    m_dDegreeNorth += NorthSecondPart.toDouble()/60.0/60.0;
+    if(isSouth)
+    {
+        m_dDegreeNorth *= -1.0;
+    }
+    m_dDegreeEast = EastDegreePart.toDouble();
+    m_dDegreeEast += EastMinutePart.toDouble()/60.0;
+    m_dDegreeEast += EastSecondPart.toDouble()/60.0/60.0;
+    if(isWest)
+    {
+        m_dDegreeEast *= -1.0;
+    }
+    ;
 }

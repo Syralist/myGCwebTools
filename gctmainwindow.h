@@ -19,13 +19,18 @@ public:
 
 public slots:
     void CoordMenuClicked();
-    void LetterNumberMenuClicked();
+    void LetterMenuClicked();
+    void NumberMenuClicked();
+
+    void UpdateDegree();
+    void UpdateDegreeMinute();
+    void UpdateDegreeMinuteSecond();
     void PrintCoordinates();
     void LetterNumberStatistics(QList<int> &Statictics);
 
 private:
     Ui::gctMainWindow *ui;
-    Coordinate m_TestCoord;
+    Coordinate m_Coord;
     LetterNumberConverter m_LetterNumberConverter;
 };
 

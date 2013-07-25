@@ -2,6 +2,8 @@
 #define COORDINATE_H
 
 #include <QObject>
+#include <QStringList>
+#include <QString>
 
 class Coordinate : public QObject
 {
@@ -16,6 +18,9 @@ public:
 signals:
 
 public slots:
+    void updateFromDegrees(QString string);
+    void updateFromDegreesMinutes(QString string);
+    void updateFromDegreesMinutesSeconds(QString string);
 
 private:
     double m_dDegreeNorth;
@@ -26,10 +31,6 @@ private:
 
     double m_dSecondNorth;
     double m_dSecondEast;
-
-    void updateFromDegrees(QString string);
-    void updateFromDegreesMinutes(QString string);
-    void updateFromDegreesMinutesSeconds(QString string);
 
     QString m_sLetterNorth;
     QString m_sLetterSouth;

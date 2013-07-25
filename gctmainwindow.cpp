@@ -4,23 +4,29 @@
 gctMainWindow::gctMainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::gctMainWindow),
-    m_TestCoord(this)
+    m_Coord(this)
 {
     ui->setupUi(this);
-    connect(ui->CoordButtonDegree,SIGNAL(clicked()),this,SLOT(PrintCoordinates()));
+
     connect(ui->CoordMenuButton,SIGNAL(clicked()),this,SLOT(CoordMenuClicked()));
-    connect(ui->LetterNumberMenuButton,SIGNAL(clicked()),this,SLOT(LetterNumberMenuClicked()));
-    connect(ui->LetterNumberComboInput,SIGNAL(currentIndexChanged(int)),&m_LetterNumberConverter,SLOT(setInput(int)));
-    connect(ui->LetterNumberComboDirection,SIGNAL(currentIndexChanged(int)),&m_LetterNumberConverter,SLOT(setDirection(int)));
-    connect(ui->LetterNumberSpinOffset,SIGNAL(valueChanged(int)),&m_LetterNumberConverter,SLOT(setOffset(int)));
-    connect(ui->LetterNumberLineInput,SIGNAL(textChanged(QString)),&m_LetterNumberConverter,SLOT(setLetters(QString)));
-    connect(ui->LetterNumberLineInput,SIGNAL(textChanged(QString)),&m_LetterNumberConverter,SLOT(setNumbers(QString)));
-    connect(&m_LetterNumberConverter,SIGNAL(UpdatedLetters(QString)),ui->LetterNumberLineOutput,SLOT(setText(QString)));
-    connect(&m_LetterNumberConverter,SIGNAL(UpdatedNumbers(QString)),ui->LetterNumberLineOutput,SLOT(setText(QString)));
+    connect(ui->CoordButtonDegree,SIGNAL(clicked()),this,SLOT(UpdateDegree()));
+    connect(ui->CoordButtonDegreeMinute,SIGNAL(clicked()),this,SLOT(UpdateDegreeMinute()));
+    connect(ui->CoordButtonDegreeMinuteSecond,SIGNAL(clicked()),this,SLOT(UpdateDegreeMinuteSecond()));
+
+    connect(ui->LetterMenuButton,SIGNAL(clicked()),this,SLOT(LetterMenuClicked()));
+    connect(ui->LetterComboInput,SIGNAL(currentIndexChanged(int)),&m_LetterNumberConverter,SLOT(setInput(int)));
+    connect(ui->LetterComboDirection,SIGNAL(currentIndexChanged(int)),&m_LetterNumberConverter,SLOT(setDirection(int)));
+    connect(ui->LetterSpinOffset,SIGNAL(valueChanged(int)),&m_LetterNumberConverter,SLOT(setOffset(int)));
+    connect(ui->LetterLineInput,SIGNAL(textChanged(QString)),&m_LetterNumberConverter,SLOT(setLetters(QString)));
+    connect(ui->LetterLineInput,SIGNAL(textChanged(QString)),&m_LetterNumberConverter,SLOT(setNumbers(QString)));
+    connect(&m_LetterNumberConverter,SIGNAL(UpdatedLetters(QString)),ui->LetterLineOutput,SLOT(setText(QString)));
+    connect(&m_LetterNumberConverter,SIGNAL(UpdatedNumbers(QString)),ui->LetterLineOutput,SLOT(setText(QString)));
     connect(&m_LetterNumberConverter,SIGNAL(UpdatedStatistics(QList<int>&)),this,SLOT(LetterNumberStatistics(QList<int>&)));
 
+    connect(ui->NumberMenuButton,SIGNAL(clicked()),this,SLOT(NumberMenuClicked()));
+
     CoordMenuClicked();
-    LetterNumberMenuClicked();
+    //LetterMenuClicked();
 }
 
 gctMainWindow::~gctMainWindow()
@@ -30,9 +36,9 @@ gctMainWindow::~gctMainWindow()
 
 void gctMainWindow::PrintCoordinates()
 {
-    ui->CoordLineDegree->setText(m_TestCoord.printDegrees());
-    ui->CoordLineDegreeMinute->setText(m_TestCoord.printDegreesMinutes());
-    ui->CoordLineDegreeMinuteSecond->setText(m_TestCoord.printDegressMinutesSeconds());
+    ui->CoordLineDegree->setText(m_Coord.printDegrees());
+    ui->CoordLineDegreeMinute->setText(m_Coord.printDegreesMinutes());
+    ui->CoordLineDegreeMinuteSecond->setText(m_Coord.printDegressMinutesSeconds());
 }
 
 void gctMainWindow::CoordMenuClicked()
@@ -40,16 +46,39 @@ void gctMainWindow::CoordMenuClicked()
     ui->stackedWidget->setCurrentWidget(ui->CoordPage);
 }
 
-void gctMainWindow::LetterNumberMenuClicked()
+void gctMainWindow::LetterMenuClicked()
 {
-    ui->stackedWidget->setCurrentWidget(ui->LetterNumberPage);
+    ui->stackedWidget->setCurrentWidget(ui->LetterPage);
+}
+
+void gctMainWindow::NumberMenuClicked()
+{
+    ui->stackedWidget->setCurrentWidget(ui->NumberPage);
+}
+
+void gctMainWindow::UpdateDegree()
+{
+    m_Coord.updateFromDegrees(ui->CoordLineDegree->text());
+    PrintCoordinates();
+}
+
+void gctMainWindow::UpdateDegreeMinute()
+{
+    m_Coord.updateFromDegreesMinutes(ui->CoordLineDegreeMinute->text());
+    PrintCoordinates();
+}
+
+void gctMainWindow::UpdateDegreeMinuteSecond()
+{
+    m_Coord.updateFromDegreesMinutesSeconds(ui->CoordLineDegreeMinuteSecond->text());
+    PrintCoordinates();
 }
 
 void gctMainWindow::LetterNumberStatistics(QList<int> &Statictics)
 {
-    ui->LetterNumberLineCharacters->setText(QString::number(Statictics.at(0)));
-    ui->LetterNumberLineLetters->setText(QString::number(Statictics.at(1)));
-    ui->LetterNumberLineLetterSum->setText(QString::number(Statictics.at(2)));
-    ui->LetterNumberLineCrossSumLetterSum->setText(QString::number(Statictics.at(3)));
-    ui->LetterNumberLineCrossSumLetterSumIterated->setText(QString::number(Statictics.at(4)));
+    ui->LetterLineCharacters->setText(QString::number(Statictics.at(0)));
+    ui->LetterLineLetters->setText(QString::number(Statictics.at(1)));
+    ui->LetterLineLetterSum->setText(QString::number(Statictics.at(2)));
+    ui->LetterLineCrossSumLetterSum->setText(QString::number(Statictics.at(3)));
+    ui->LetterLineCrossSumLetterSumIterated->setText(QString::number(Statictics.at(4)));
 }

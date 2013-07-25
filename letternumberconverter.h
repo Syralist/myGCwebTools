@@ -25,7 +25,14 @@ public slots:
     void setNumbers(QString Numbers);
 
 private:
+    void LettersToNumbers(QString &Letters, QList<int> &Numbers);
+    void NumberListToNumberString(QList<int> &Numbers, QString &NumberString);
+    int NumOfLetters(QList<int> Numbers);
+    int NumOfChars(QList<int> Numbers);
+    int SumOfLetters(QList<int> Numbers);
     int CrossSum(int Number);
+    int CrossSumIterated(int Number);
+    void CalculateStatistics(QList<int> &Statistics, QList<int> &Numbers);
 
     QString m_sLetters;
     QString m_sNumbers;
