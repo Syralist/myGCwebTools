@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include "coordinate.h"
 #include "letternumberconverter.h"
+#include "lettersymbol.h"
 
 namespace Ui {
     class gctMainWindow;
@@ -26,12 +27,17 @@ public slots:
     void UpdateDegreeMinute();
     void UpdateDegreeMinuteSecond();
     void PrintCoordinates();
+
     void LetterNumberStatistics(QList<int> &Statictics);
+
+    void LetterToCode();
+    void CodeToLetter();
 
 private:
     Ui::gctMainWindow *ui;
     Coordinate m_Coord;
     LetterNumberConverter m_LetterNumberConverter;
+    LetterSymbol m_LetterSymbol;
 };
 
 #endif // GCTMAINWINDOW_H

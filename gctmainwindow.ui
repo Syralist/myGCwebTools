@@ -64,7 +64,7 @@
     <item>
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="CoordPage">
        <layout class="QGridLayout" name="gridLayout">
@@ -366,6 +366,31 @@
            <attribute name="title">
             <string>Letter codes</string>
            </attribute>
+           <layout class="QGridLayout" name="gridLayout_7">
+            <item row="4" column="0">
+             <widget class="QLineEdit" name="LetterCodesInputCode"/>
+            </item>
+            <item row="3" column="0">
+             <widget class="QPushButton" name="LetterCodesToLetter">
+              <property name="text">
+               <string>Code to Letter</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="0">
+             <widget class="QLineEdit" name="LetterCodesInputLetter"/>
+            </item>
+            <item row="1" column="0">
+             <widget class="QPushButton" name="LetterCodesToCode">
+              <property name="text">
+               <string>Letter to Code</string>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="0">
+             <widget class="QComboBox" name="LetterCodesSelectCode"/>
+            </item>
+           </layout>
           </widget>
          </widget>
         </item>

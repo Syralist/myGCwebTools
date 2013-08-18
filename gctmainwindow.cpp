@@ -22,11 +22,17 @@ gctMainWindow::gctMainWindow(QWidget *parent) :
     connect(&m_LetterNumberConverter,SIGNAL(UpdatedLetters(QString)),ui->LetterLineOutput,SLOT(setText(QString)));
     connect(&m_LetterNumberConverter,SIGNAL(UpdatedNumbers(QString)),ui->LetterLineOutput,SLOT(setText(QString)));
     connect(&m_LetterNumberConverter,SIGNAL(UpdatedStatistics(QList<int>&)),this,SLOT(LetterNumberStatistics(QList<int>&)));
+    connect(ui->LetterCodesToCode,SIGNAL(clicked()),this,SLOT(LetterToCode()));
+    connect(ui->LetterCodesToLetter,SIGNAL(clicked()),this,SLOT(CodeToLetter()));
 
     connect(ui->NumberMenuButton,SIGNAL(clicked()),this,SLOT(NumberMenuClicked()));
 
+    ui->LetterCodesSelectCode->addItem(tr("Morsecode"),"Morsecode");
+    ui->LetterCodesSelectCode->setCurrentIndex(0);
+
     CoordMenuClicked();
     //LetterMenuClicked();
+
 }
 
 gctMainWindow::~gctMainWindow()
@@ -81,4 +87,29 @@ void gctMainWindow::LetterNumberStatistics(QList<int> &Statictics)
     ui->LetterLineLetterSum->setText(QString::number(Statictics.at(2)));
     ui->LetterLineCrossSumLetterSum->setText(QString::number(Statictics.at(3)));
     ui->LetterLineCrossSumLetterSumIterated->setText(QString::number(Statictics.at(4)));
+}
+
+void gctMainWindow::LetterToCode()
+{
+    ui->LetterCodesInputCode->clear();
+    QString Letters = ui->LetterCodesInputLetter->text();
+    QString Symbols;
+    QString SymbolList = ui->LetterCodesSelectCode->itemData(ui->LetterCodesSelectCode->currentIndex()).toString();
+    foreach (QString letter, Letters) {
+        Symbols.append(m_LetterSymbol.toSymbol(letter,SymbolList));
+        Symbols.append(" ");
+    }
+    ui->LetterCodesInputCode->setText(Symbols);
+}
+
+void gctMainWindow::CodeToLetter()
+{
+    ui->LetterCodesInputLetter->clear();
+    QString Symbols = ui->LetterCodesInputCode->text();
+    QString Letters;
+    QString SymbolList = ui->LetterCodesSelectCode->itemData(ui->LetterCodesSelectCode->currentIndex()).toString();
+    foreach (QString symbol, Symbols.split(" ")) {
+        Letters.append(m_LetterSymbol.toLetter(symbol,SymbolList));
+    }
+    ui->LetterCodesInputLetter->setText(Letters);
 }

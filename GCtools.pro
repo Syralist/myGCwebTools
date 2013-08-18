@@ -13,11 +13,13 @@ TEMPLATE = app
 SOURCES += main.cpp\
         gctmainwindow.cpp \
     coordinate.cpp \
-    letternumberconverter.cpp
+    letternumberconverter.cpp \
+    lettersymbol.cpp
 
 HEADERS  += gctmainwindow.h \
     coordinate.h \
-    letternumberconverter.h
+    letternumberconverter.h \
+    lettersymbol.h
 
 FORMS    += gctmainwindow.ui
 
