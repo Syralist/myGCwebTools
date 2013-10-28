@@ -16,9 +16,9 @@ class Coordinate(object):
     __LetterSouth = "S"
     __LetterWest = "W"
     __LetterEast = "E"
-    __RePatternDegrees = "([nNsS])\s*([0-9]{1,3}[.,][0-9]+)[\s°]*([wWeE])\s*([0-9]{1,3}[.,][0-9]+)[\s°]*"
-    __RePatternDegreesMinutes = "([nNsS])\s*([0-9]{1,3})[\s°]*([0-9]+[.,][0-9]+)[\s']*([wWeE])\s*([0-9]{1,3})[\s°]*([0-9]+[.,][0-9]+)[\s']*"
-    __RePatternDegreesMinutesSeconds = "([nNsS])\s*([0-9]{1,3})[\s°]*([0-9]+)[\s']*([0-9]+[.,][0-9]+)[\s\"]*([eEwW])\s*([0-9]{1,3})[\s°]*([0-9]+)[\s']*([0-9]+[.,][0-9]+)[\s\"]*"
+    __RePatternDegrees = "([nNsS])\s*([0-9]{1,3}[.,][0-9]+)[\s°,]*([wWeE])\s*([0-9]{1,3}[.,][0-9]+)[\s°]*"
+    __RePatternDegreesMinutes = "([nNsS])\s*([0-9]{1,3})[\s°]*([0-9]+[.,][0-9]+)[\s',]*([wWeE])\s*([0-9]{1,3})[\s°]*([0-9]+[.,][0-9]+)[\s']*"
+    __RePatternDegreesMinutesSeconds = "([nNsS])\s*([0-9]{1,3})[\s°]*([0-9]+)[\s']*([0-9]+[.,][0-9]+)[\s\",]*([eEwW])\s*([0-9]{1,3})[\s°]*([0-9]+)[\s']*([0-9]+[.,][0-9]+)[\s\"]*"
 
     def __init__(self, Level):
         '''
@@ -98,6 +98,7 @@ class Coordinate(object):
         else:
             self.__NorthString += self.__LetterNorth
             self.__NorthString += str(self.__North)
+        self.__NorthString += "°"
         
         self.__EastString = ""
         if self.__East < 0:
@@ -106,6 +107,7 @@ class Coordinate(object):
         else:
             self.__EastString += self.__LetterEast
             self.__EastString += str(self.__East) 
+        self.__EastString += "°"
         return " ".join([self.__NorthString, self.__EastString])
     
     def toDegreesMinutes(self):
@@ -149,7 +151,7 @@ class Coordinate(object):
         self.__NorthString += str(int(integer))
         self.__NorthString += "° "
         self.__NorthString += str(int(minteger))
-        self.__NorthString += "'"
+        self.__NorthString += "' "
         self.__NorthString += str(mdecimal*60.0)
         self.__NorthString += "\""
         
@@ -165,7 +167,7 @@ class Coordinate(object):
         self.__EastString += str(int(integer))
         self.__EastString += "° "
         self.__EastString += str(int(minteger))
-        self.__EastString += "'"
+        self.__EastString += "' "
         self.__EastString += str(mdecimal*60.0)
         self.__EastString += "\""
         return " ".join([self.__NorthString, self.__EastString])

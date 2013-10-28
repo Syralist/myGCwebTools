@@ -10,7 +10,7 @@ from tools import coordinate
 if __name__ == '__main__':
     test = coordinate.Coordinate(4)
     print test
-    test.fromString("s53°9'9.360\" e 8°7'6.9\"")
+    test.fromString("N53°05.227', E008°47.509'")
     print test.toDegrees()
     print test.toDegreesMinutes()
     print test.toDegreesMinutesSeconds()
