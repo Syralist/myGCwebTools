@@ -6,6 +6,7 @@ Created on 17.10.2013
 '''
 
 from tools import coordinate
+from tools import lettermap
 
 if __name__ == '__main__':
     test = coordinate.Coordinate(4)
@@ -15,3 +16,4 @@ if __name__ == '__main__':
     print test.toDegreesMinutes()
     print test.toDegreesMinutesSeconds()
     pass
+    test2 = lettermap.LetterMap(4)
