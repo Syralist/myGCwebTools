@@ -17,3 +17,5 @@ if __name__ == '__main__':
     print test.toDegreesMinutesSeconds()
     pass
     test2 = lettermap.LetterMap(4)
+    print test2.LetterToSymbol('ab c', 'Morse')
+    print test2.SymbolToLetter('.- -... -.-.', 'Morse')
